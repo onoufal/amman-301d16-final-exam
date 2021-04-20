@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+  </head>
+  <body>
+    <main>
+      <form action="/saved" method="POST">
+        <% quotes.forEach(quotes => { %>
+        <p>Quotes: <%= quotes.quote %></p>
+        <p>Character: <%= quotes.character %></p>
+        <p>Image link:<%= quotes.image %></p>
+        <p>Direction<%= quotes.characterDirection %></p>
+
+        <input type="hidden" name="quote" value="<%= quotes.quote %>" />
+        <input type="hidden" name="character" value="<%= quotes.character %>" />
+        <input type="hidden" name="image" value="<%= quotes.image %>" />
+        <input
+          type="hidden"
+          name="characterDirection"
+          value="<%= quotes.characterDirection %>"
+        />
+        <input type="submit" value="Save Quote" />
+        <hr />
+        <% }) %>
+      </form>
+    </main>
+  </body>
+</html>
