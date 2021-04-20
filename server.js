@@ -60,18 +60,18 @@ app.post("/saved", (req, res) => {
   const sql = `INSERT INTO qoutes(quote, character, image, characterDirection) VALUES($1, $2, $3, $4);`;
   const values = [quote, character, image, characterDirection];
   client.query(sql, values).then(() => {
-    res.redirect("/");
+    res.redirect("/saved");
   });
 });
 
-// //render to save
-// app.get("/saved", (req, res) => {
-//   const sql = `SELECT * FROM qoutes WHERE id=$1;`;
-//   const values = [1];
-//   client.query(sql, values).then((results) => {
-//     res.render("./pages/saved", { results: results.rows });
-//   });
-// });
+//render to save
+app.get("/saved", (req, res) => {
+  const sql = `SELECT * FROM qoutes;`;
+  const values = [];
+  client.query(sql, values).then((results) => {
+    res.render("./pages/saved", { results: results.rows });
+  });
+});
 
 // callback functions
 // -- WRITE YOUR CALLBACK FUNCTIONS FOR THE ROUTES HERE --
